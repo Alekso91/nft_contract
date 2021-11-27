@@ -23,6 +23,8 @@ contract MyEpicNFT is ERC721URIStorage {
   string[] secondWords = ["Grandma", "Pancake", "Frog", "Cat", "Tenders", "Carrot"];
   string[] thirdWords = ["Ninja", "Naked", "Crazy", "Rich", "Secret", "Juicy"];
 
+  event NewEpicNFTMinted(address sender, uint256 tokenId);
+
   constructor() ERC721 ("AlexoNFT", "ALEXO") {
     console.log("This is my NFT contract. Woah!");
   }
@@ -74,6 +76,9 @@ contract MyEpicNFT is ERC721URIStorage {
                 )
             )
         )
+    
+    emit NewEpicNFTMinted(msg.sender, newItemId);
+      
     );
 
     // Just like before, we prepend data:application/json;base64, to our data.
